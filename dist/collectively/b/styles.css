@@ -81,7 +81,7 @@ main:focus{outline:none}
 .what .head{display:grid;grid-template-columns:1fr 520px;gap:96px;align-items:start}
 .what .head p{color:rgba(255,255,255,.8);font-size:17px;line-height:1.7;padding-top:12px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);margin-top:88px;border-block:1px solid var(--line-dark)}
-.step{position:relative;padding:44px 48px 52px}
+.step{position:relative;padding:44px 48px 48px}
 .step:first-child{padding-left:0}
 .step:last-child{padding-right:0}
 .step+.step{border-left:1px solid var(--line-dark)}
@@ -89,10 +89,8 @@ main:focus{outline:none}
 .step+.step::before,.step+.step::after{content:"";position:absolute;left:-2px;width:3px;height:14px;background:var(--line-dark);transition:background-color 220ms ease}
 .step+.step::before{top:-1px;transform-origin:top}
 .step+.step::after{bottom:-1px;transform-origin:bottom}
-.step-top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;min-height:56px}
-.step .n{display:block;font:300 56px/1 var(--serif);color:rgba(255,255,255,.72);font-variant-numeric:lining-nums;transition:color 220ms ease}
-.step-icon{flex:none;width:36px;height:36px;margin-top:7px;color:rgba(142,201,242,.72);transition:color 220ms ease,translate 220ms var(--ease-out)}
-.step h3{color:rgba(255,255,255,.72);margin-top:72px;transition:color 220ms ease}
+.step-icon{width:34px;height:34px;color:var(--icon);transition:translate 220ms var(--ease-out)}
+.step h3{color:rgba(255,255,255,.72);margin-top:48px;transition:color 220ms ease}
 .step p{color:rgba(255,255,255,.72);margin-top:10px;font-size:16px;max-width:300px}
 .pricing{margin-top:32px;font-size:14px;color:rgba(255,255,255,.72)}
 .pricing b{font-weight:500;color:#fff}
@@ -114,8 +112,8 @@ main:focus{outline:none}
   .wrow:hover .go svg,.wrow .go:focus-visible svg{translate:3px 0}
   .wrow .go-label{opacity:0;translate:6px 0;transition:opacity 180ms ease,translate 180ms var(--ease-out)}
   .wrow:hover .go-label,.wrow:focus-within .go-label{opacity:1;translate:0 0}
-  .step:hover .n,.step:hover h3{color:#fff}
-  .step:hover .step-icon{color:#8EC9F2;translate:0 -2px}
+  .step:hover h3{color:#fff}
+  .step:hover .step-icon{translate:0 -2px}
   .step:hover::before,.step:hover::after{background:#8EC9F2}
 }
 
