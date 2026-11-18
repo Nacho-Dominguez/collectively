@@ -67,8 +67,9 @@ main:focus{outline:none}
 /* Mission */
 .mission-in{display:grid;grid-template-columns:1fr 520px;gap:96px;align-items:center;padding-block:var(--section)}
 .mission-figure{position:relative;display:flex;align-items:flex-start;min-height:240px;padding:18px 0 0 64px}
-.mission-figure::before{content:"";position:absolute;left:0;top:12px;width:30px;height:208px;background:repeating-linear-gradient(to bottom,rgba(11,27,51,.22) 0 2px,transparent 2px 31px);mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
-.mission-figure::after{content:"";position:absolute;left:0;top:120px;width:48px;height:3px;background:var(--blue)}
+.mission-ruler{position:absolute;left:0;top:12px;display:flex;flex-direction:column;justify-content:space-between;width:48px;height:208px}
+.mission-tick{display:block;width:48px;height:2px;background-color:rgba(11,27,51,.23);scale:.63 1;transform-origin:left center}
+.mission-tick:first-child{background-color:var(--blue);scale:1 1}
 .mission .num{font:300 150px/1.1 var(--serif);letter-spacing:-.045em;color:var(--blue);font-variant-numeric:tabular-nums;white-space:nowrap}
 .mission h2{color:var(--ink);margin-bottom:28px}
 .mission .copy p{font-size:16px;line-height:1.7;color:var(--muted)}
@@ -142,8 +143,9 @@ main:focus{outline:none}
 /* ---------- Motion ---------- */
 @keyframes rise{from{opacity:0;translate:0 22px}}
 @keyframes stage-in{from{opacity:0;clip-path:inset(10% 4% 0 4%)}to{opacity:1;clip-path:inset(0)}}
-@keyframes tick{from{scale:1 0}}
 @keyframes claim-par{to{translate:0 -96px}}
+@keyframes ruler-wave{0%,100%{scale:.63 1;background-color:rgba(11,27,51,.23)}50%{scale:1 1;background-color:var(--blue)}}
+@keyframes ruler-wave-end{0%{scale:.63 1;background-color:rgba(11,27,51,.23)}50%,100%{scale:1 1;background-color:var(--blue)}}
 @media (prefers-reduced-motion:no-preference){
   /* Page start: hero copy, stage and claim card arrive in sequence. */
   .enter{animation:rise 800ms var(--ease-out) var(--d,0ms) both}
@@ -153,8 +155,9 @@ main:focus{outline:none}
   .motion .step+.step.is-in::before,.motion .step+.step.is-in::after{scale:1 1}
   .motion .mission-figure .num{scale:.55;translate:0 68px;transform-origin:left top;transition:scale 1600ms var(--ease-out),translate 1600ms var(--ease-out)}
   .motion .mission-figure.is-in .num{scale:1;translate:0 0}
-  .motion .mission-figure::after{transition:top 1600ms var(--ease-out)}
-  .motion .mission-figure.is-in::after{top:58px}
+  .motion .mission-tick:first-child{background-color:rgba(11,27,51,.23);scale:.63 1}
+  .motion .mission-figure.is-in .mission-tick{animation:ruler-wave 400ms ease-in-out var(--wave-delay) both}
+  .motion .mission-figure.is-in .mission-tick:first-child{animation-name:ruler-wave-end}
   /* The card begins flush with the stage and rises as the stage scrolls away. */
   @supports (animation-timeline:view()){
     @media (min-width:761px){
@@ -191,9 +194,8 @@ main:focus{outline:none}
   .claim-bottom{align-items:flex-start;flex-direction:column;gap:24px}
   .mission .num{font-size:84px}
   .mission-figure{min-height:160px;padding-left:48px}
-  .mission-figure::before{height:148px}
-  .mission-figure::after{width:36px;top:92px}
-  .motion .mission-figure.is-in::after{top:44px}
+  .mission-ruler{width:36px;height:148px}
+  .mission-tick{width:36px}
   .motion .mission-figure .num{translate:0 44px}
   .steps{grid-template-columns:1fr;margin-top:48px}
   .step,.step:first-child,.step:last-child{padding:32px 0}
