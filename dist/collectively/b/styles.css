@@ -125,7 +125,7 @@ main:focus{outline:none}
 .close .iso{width:56px;height:56px;margin:0 auto 36px;object-fit:contain}
 .close h2{max-width:800px;margin-inline:auto}
 .close .lead{max-width:560px;margin:24px auto 0}
-.close .lead strong{font-weight:500;color:var(--ink)}
+.close .lead strong{display:block;white-space:nowrap;font-weight:500;color:var(--ink)}
 .close .btn{margin-top:40px}
 
 /* Footer */
