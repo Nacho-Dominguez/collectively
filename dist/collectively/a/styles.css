@@ -110,12 +110,13 @@ main:focus{outline:none}
 /* Footer */
 .foot-site{position:relative;color:rgba(255,255,255,.78);padding-block:78px 42px;font-size:13px;line-height:1.7}
 .foot-top,.foot-bot{position:relative}
-.foot-top{display:flex;flex-direction:column;align-items:center;padding-bottom:42px;border-bottom:1px solid rgba(255,255,255,.22);text-align:center}
+.foot-top{display:flex;flex-direction:column;align-items:center;padding-bottom:42px;border-bottom:1px solid rgba(255,255,255,.10);text-align:center}
 .foot-brand{display:inline-flex;padding:0;width:max-content}
 .foot-brand img{width:126px;height:38px;object-fit:contain}
 .foot-links{display:flex;justify-content:center;gap:32px;font-size:15px;font-weight:500;color:#fff;margin:30px 0 20px}
 .foot-top p{max-width:760px}
-.foot-bot{display:flex;justify-content:center;gap:24px;padding-top:26px;color:rgba(255,255,255,.72);text-align:center}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-top:26px;color:rgba(255,255,255,.72)}
+.foot-bottom-links{display:flex;flex-wrap:wrap;gap:24px}
 .foot-site a{display:inline-block;padding-block:4px}
 .foot-site :focus-visible{outline-color:#fff}
 @media (hover:hover) and (pointer:fine){.foot-site a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}}
@@ -186,5 +187,6 @@ main:focus{outline:none}
   .close{padding-block:96px}
   .close h2{font-size:42px}
   .foot-brand img{width:110px;height:34px}
-  .foot-bot{flex-direction:column}
+  .foot-bot{flex-direction:column;align-items:stretch;gap:12px}
+  .foot-bot>p{text-align:right}
 }
