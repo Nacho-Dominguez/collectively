@@ -84,11 +84,9 @@ main:focus{outline:none}
 .ways-lead{font-family:var(--serif);font-size:30px;line-height:1.45;letter-spacing:-.01em;max-width:860px}
 .industry-page+.industry-page{margin-top:24px}
 .ways-controls[hidden]{display:none}
-.ways-controls{display:flex;align-items:center;justify-content:flex-end;gap:20px;margin-bottom:20px}
-.ways-page-count{font-size:12px;letter-spacing:.12em;font-weight:500;color:var(--muted);font-variant-numeric:tabular-nums}
+.ways-controls{display:flex;align-items:center;justify-content:flex-end;margin-bottom:20px}
 .ways-nav{display:flex;gap:8px}
 .ways-nav button{display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);cursor:pointer;transition:background-color 180ms var(--ease),border-color 180ms var(--ease),color 180ms var(--ease)}
-.ways-nav button:disabled{opacity:.35;cursor:default}
 .ways-nav button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .ways.is-ready .ways-head{margin-bottom:32px}
 .ways.is-ready .industry-viewport{overflow:hidden}
@@ -107,7 +105,7 @@ main:focus{outline:none}
 .tile .foot svg{color:var(--icon);transition:translate 200ms var(--ease)}
 .tile.ph img{width:100%;height:100%;object-fit:cover;transition:scale 700ms var(--ease)}
 @media (hover:hover) and (pointer:fine){
-  .ways-nav button:not(:disabled):hover{background:var(--mist);border-color:var(--blue);color:var(--blue-text)}
+  .ways-nav button:hover{background:var(--mist);border-color:var(--blue);color:var(--blue-text)}
   .tile-link:hover .foot svg{translate:2px -2px}
   .tile.ph:hover img{scale:1.03}
 }
