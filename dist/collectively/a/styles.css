@@ -20,12 +20,13 @@ main:focus{outline:none}
 
 .topbar{background:var(--deep);color:rgba(255,255,255,.78);font-size:13px;letter-spacing:.01em;text-align:center;padding:11px 24px;border-bottom:1px solid rgba(255,255,255,.08)}
 
-/* Hero: the gradient darkens a touch longer so the white subtitle keeps AA contrast. */
+/* The aurora sits over the existing dark-to-light sky and fades before the card. */
 .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#0A2A5E 0%,#0F3A81 24%,#1A56B5 46%,#3B97F7 58%,#7CC7F2 68%,#D6EEFB 79%,#FFFFFF 88%)}
-.sky{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-.sky.a{width:720px;height:440px;left:-140px;top:140px;background:var(--celeste);opacity:.45}
-.sky.b{width:640px;height:560px;right:-120px;top:60px;background:var(--blue);opacity:.55}
-.sky.c{width:900px;height:360px;left:300px;top:40px;background:#0A2A5E;opacity:.6}
+.aurora{position:absolute;inset:0 0 auto;height:min(850px,90%);overflow:hidden;pointer-events:none;mask-image:linear-gradient(180deg,#000 0%,#000 42%,rgba(0,0,0,.7) 62%,transparent 100%);transition:translate 350ms var(--ease)}
+.aurora-wave{position:absolute;display:block;width:85%;height:550px;filter:blur(48px);opacity:.75;will-change:transform;transform-origin:50% 0}
+.wave-a{left:-28%;top:95px;background:radial-gradient(ellipse 64% 75% at 55% 38%,rgba(8,203,236,.8),rgba(59,151,247,.35) 49%,transparent 76%);transform:rotate(-24deg) skewY(-12deg);animation:aurora-a 13s ease-in-out infinite alternate}
+.wave-b{right:-25%;top:-30px;background:radial-gradient(ellipse 62% 80% at 45% 50%,rgba(91,192,255,.72),rgba(12,100,205,.48) 52%,transparent 78%);transform:rotate(27deg) skewY(12deg);animation:aurora-b 16s ease-in-out infinite alternate}
+.wave-c{left:20%;top:70px;width:60%;height:460px;background:radial-gradient(ellipse at 50% 50%,rgba(145,225,255,.34),rgba(34,144,232,.16) 54%,transparent 78%);transform:rotate(-9deg);animation:aurora-c 18s ease-in-out infinite alternate}
 .hero-threads{position:absolute;inset:0;pointer-events:none;opacity:.16;background:repeating-linear-gradient(100deg,transparent 0 18px,rgba(255,255,255,.34) 19px,rgba(255,255,255,.08) 20px,transparent 21px 38px);mask-image:linear-gradient(90deg,transparent 0%,#000 17%,#000 83%,transparent 100%),linear-gradient(180deg,#000 0%,transparent 68%);mask-composite:intersect;transform:scale(1.08) rotate(-2deg);transform-origin:center;animation:threads-drift 18s ease-in-out infinite alternate}
 .nav{position:relative;display:flex;align-items:center;justify-content:space-between;gap:32px;padding-block:28px}
 .nav img{height:34px;width:auto}
@@ -81,6 +82,18 @@ main:focus{outline:none}
 .ways{padding-block:120px 140px;border-top:1px solid var(--line)}
 .ways-head{display:grid;grid-template-columns:var(--label) 1fr;margin-bottom:72px}
 .ways-lead{font-family:var(--serif);font-size:30px;line-height:1.45;letter-spacing:-.01em;max-width:860px}
+.industry-page+.industry-page{margin-top:24px}
+.ways-controls[hidden]{display:none}
+.ways-controls{display:flex;align-items:center;justify-content:flex-end;gap:20px;margin-bottom:20px}
+.ways-page-count{font-size:12px;letter-spacing:.12em;font-weight:500;color:var(--muted);font-variant-numeric:tabular-nums}
+.ways-nav{display:flex;gap:8px}
+.ways-nav button{display:grid;place-items:center;width:42px;height:42px;padding:0;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--ink);cursor:pointer;transition:background-color 180ms var(--ease),border-color 180ms var(--ease),color 180ms var(--ease)}
+.ways-nav button:disabled{opacity:.35;cursor:default}
+.ways-nav button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.ways.is-ready .ways-head{margin-bottom:32px}
+.ways.is-ready .industry-viewport{overflow:hidden}
+.ways.is-ready .industry-track{display:flex;transition:transform 280ms var(--ease)}
+.ways.is-ready .industry-page{flex:0 0 100%;width:100%;min-width:0;margin-top:0}
 .tiles{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:320px}
 .tile{position:relative;overflow:hidden}
 .tile-link{display:flex;flex-direction:column;height:100%;padding:32px}
@@ -94,6 +107,7 @@ main:focus{outline:none}
 .tile .foot svg{color:var(--icon);transition:translate 200ms var(--ease)}
 .tile.ph img{width:100%;height:100%;object-fit:cover;transition:scale 700ms var(--ease)}
 @media (hover:hover) and (pointer:fine){
+  .ways-nav button:not(:disabled):hover{background:var(--mist);border-color:var(--blue);color:var(--blue-text)}
   .tile-link:hover .foot svg{translate:2px -2px}
   .tile.ph:hover img{scale:1.03}
 }
@@ -124,6 +138,9 @@ main:focus{outline:none}
 @keyframes rise{from{opacity:0;translate:0 24px}}
 @keyframes drift{to{translate:0 -56px}}
 @keyframes threads-drift{from{translate:-1.5% -1%}to{translate:1.5% 1%}}
+@keyframes aurora-a{to{transform:translate3d(8%,8%,0) rotate(-15deg) skewY(-8deg) scale(1.12)}}
+@keyframes aurora-b{to{transform:translate3d(-10%,10%,0) rotate(18deg) skewY(8deg) scale(1.08)}}
+@keyframes aurora-c{to{transform:translate3d(-7%,-4%,0) rotate(5deg) scale(1.18)}}
 @media (prefers-reduced-motion:no-preference){
   .enter{animation:rise 760ms var(--ease) var(--d,0ms) both}
   .card.enter{animation-duration:820ms}
@@ -156,7 +173,9 @@ main:focus{outline:none}
   .nav nav{order:3;width:100%}
   .nav ul{gap:24px;flex-wrap:wrap}
   .hero{background:linear-gradient(180deg,#0A2A5E 0%,#0F3A81 30%,#1A56B5 52%,#3B97F7 64%,#7CC7F2 74%,#D6EEFB 83%,#FFFFFF 92%)}
-  .sky.a,.sky.b{opacity:.22}
+  .aurora{height:660px;mask-image:linear-gradient(180deg,#000 0%,#000 35%,transparent 92%)}
+  .aurora-wave{width:130%;filter:blur(42px);opacity:.55}
+  .wave-a{left:-65%}.wave-b{right:-65%}.wave-c{left:-15%;width:130%}
   .hero-copy{padding-top:72px}
   .hero h1{font-size:44px}
   .hero .sub{font-size:18px}
@@ -189,4 +208,8 @@ main:focus{outline:none}
   .foot-brand img{width:110px;height:34px}
   .foot-bot{flex-direction:column;align-items:stretch;gap:12px}
   .foot-bot>p{text-align:right}
+}
+@media (prefers-reduced-motion:reduce){
+  .aurora-wave,.hero-threads{animation:none}
+  .aurora,.ways.is-ready .industry-track{transition:none}
 }
