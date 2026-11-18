@@ -65,10 +65,10 @@ main:focus{outline:none}
 .claim-bottom .btn{flex:none}
 
 /* Mission */
-.mission-in{display:grid;grid-template-columns:1fr 520px;gap:96px;align-items:stretch;padding-block:var(--section)}
+.mission-in{display:grid;grid-template-columns:1fr 520px;gap:96px;align-items:stretch;width:min(1296px,100% - 2*72px);padding-block:calc(var(--section) + 24px)}
 .mission-figure{position:relative;display:flex;align-items:flex-start;min-height:300px;padding-left:64px}
 .mission-ruler{position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;width:60px}
-.mission-tick{display:block;width:60px;height:1px;background-color:#111;scale:.62 1;transform-origin:left center}
+.mission-tick{display:block;width:60px;height:1.5px;background-color:#111;scale:.62 1;transform-origin:left center}
 .mission-tick:first-child{background-color:var(--blue);scale:1 1}
 .mission .num{font:300 150px/1.1 var(--serif);letter-spacing:-.045em;color:var(--blue);font-variant-numeric:tabular-nums;white-space:nowrap;margin-top:-28px}
 .mission h2{color:var(--ink);margin-bottom:28px}
@@ -171,6 +171,7 @@ main:focus{outline:none}
   :root{--gutter:48px;--section:112px}
   h1{font-size:60px} h2{font-size:44px}
   .mission-in,.what .head,.ways .head{grid-template-columns:1fr;gap:28px}
+  .mission-in{width:calc(100% - 2*var(--gutter))}
   .mission .num{font-size:120px;margin-top:-22px}
   .mission-figure{min-height:240px}
   .motion .mission-figure .num{translate:0 160px}
