@@ -66,12 +66,11 @@ main:focus{outline:none}
 
 /* Mission */
 .mission-in{display:grid;grid-template-columns:1fr 520px;gap:96px;align-items:center;padding-block:var(--section)}
-.mission .num{font:300 150px/1.1 var(--serif);letter-spacing:-.045em;color:#5595F0;font-variant-numeric:tabular-nums}
-.mission-line{display:block;height:1px;margin-top:14px;background:linear-gradient(90deg,rgba(85,149,240,.55),rgba(85,149,240,.16) 72%,transparent)}
-.mission-line:nth-child(2){width:88%;margin-top:30px}
-.mission-line:nth-child(3){width:66%}
-.mission-line:nth-child(4){width:78%}
-.mission h2{color:var(--navy);margin-bottom:28px}
+.mission-figure{position:relative;display:flex;align-items:flex-start;min-height:240px;padding:18px 0 0 64px}
+.mission-figure::before{content:"";position:absolute;left:0;top:12px;width:30px;height:208px;background:repeating-linear-gradient(to bottom,rgba(11,27,51,.22) 0 2px,transparent 2px 31px);mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent)}
+.mission-figure::after{content:"";position:absolute;left:0;top:120px;width:48px;height:3px;background:#5595F0}
+.mission .num{font:300 150px/1.1 var(--serif);letter-spacing:-.045em;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mission h2{color:var(--ink);margin-bottom:28px}
 .mission .copy p{font-size:16px;line-height:1.7;color:var(--muted)}
 .mission .copy p+p{margin-top:20px}
 .mission .copy .src{font-size:13px;margin-top:28px}
@@ -149,10 +148,10 @@ main:focus{outline:none}
   /* Divider ticks draw in once the steps reveal. */
   .motion .step+.step::before,.motion .step+.step::after{scale:1 0;transition:scale 600ms var(--ease-out) calc(var(--d,0ms) + 300ms),background-color 220ms ease}
   .motion .step+.step.is-in::before,.motion .step+.step.is-in::after{scale:1 1}
-  .motion .mission-line{scale:0 1;transform-origin:left;transition:scale 900ms var(--ease-out)}
-  .motion .mission-figure.is-in .mission-line{scale:1 1}
-  .motion .mission-line:nth-child(3){transition-delay:110ms}
-  .motion .mission-line:nth-child(4){transition-delay:220ms}
+  .motion .mission-figure .num{scale:.55;translate:0 68px;transform-origin:left top;transition:scale 1600ms var(--ease-out),translate 1600ms var(--ease-out)}
+  .motion .mission-figure.is-in .num{scale:1;translate:0 0}
+  .motion .mission-figure::after{transition:top 1600ms var(--ease-out)}
+  .motion .mission-figure.is-in::after{top:58px}
   /* The card begins flush with the stage and rises as the stage scrolls away. */
   @supports (animation-timeline:view()){
     @media (min-width:761px){
@@ -188,6 +187,11 @@ main:focus{outline:none}
   .claim dl{flex-direction:column;gap:16px}
   .claim-bottom{align-items:flex-start;flex-direction:column;gap:24px}
   .mission .num{font-size:84px}
+  .mission-figure{min-height:160px;padding-left:48px}
+  .mission-figure::before{height:148px}
+  .mission-figure::after{width:36px;top:92px}
+  .motion .mission-figure.is-in::after{top:44px}
+  .motion .mission-figure .num{translate:0 44px}
   .steps{grid-template-columns:1fr;margin-top:48px}
   .step,.step:first-child,.step:last-child{padding:32px 0}
   .step+.step{border-left:0;border-top:1px solid var(--line-dark)}
