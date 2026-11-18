@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="../assets/base.css">
 <link rel="stylesheet" href="styles.css">
 <script src="../assets/motion.js" defer></script>
+<script src="mission-variants.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -59,7 +60,14 @@
     </div>
   </section>
 
-  <section class="mission" id="mission" aria-labelledby="mission-title">
+  <section class="mission" id="mission" aria-labelledby="mission-title" data-layout="editorial">
+    <div class="mission-switcher" role="group" aria-label="Our mission layout options">
+      <span class="mission-switcher-label">Explore layouts</span>
+      <button type="button" data-mission-layout="editorial" aria-pressed="true">01 Editorial</button>
+      <button type="button" data-mission-layout="panel" aria-pressed="false">02 Panel</button>
+      <button type="button" data-mission-layout="banner" aria-pressed="false">03 Banner</button>
+      <button type="button" data-mission-layout="centered" aria-pressed="false">04 Centered</button>
+    </div>
     <div class="wrap mission-in">
       <div class="mission-figure" data-reveal data-count="238" data-prefix="$" data-suffix="B">
         <div class="mission-ruler" aria-hidden="true">
