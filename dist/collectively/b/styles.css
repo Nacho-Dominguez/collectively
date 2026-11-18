@@ -118,7 +118,7 @@ main:focus{outline:none}
 
 /* Closing */
 .close{position:relative;overflow:hidden;text-align:center;padding-block:160px;border-top:1px solid var(--line);background:var(--mist)}
-.close::before,.close::after{content:"";position:absolute;background:url("../assets/img/collectively-mark-outline.svg") center/contain no-repeat;opacity:.05;pointer-events:none}
+.close::before,.close::after{content:"";position:absolute;background:url("../assets/img/collectively-mark-outline.svg") center/contain no-repeat;opacity:.065;pointer-events:none}
 .close::before{width:640px;height:640px;left:-330px;top:50%;transform:translateY(-50%)}
 .close::after{width:640px;height:640px;right:-330px;top:50%;transform:translateY(-50%) scaleX(-1)}
 .close .wrap{position:relative;z-index:1}
@@ -153,7 +153,7 @@ main:focus{outline:none}
   /* Divider ticks draw in once the steps reveal. */
   .motion .step+.step::before,.motion .step+.step::after{scale:1 0;transition:scale 600ms var(--ease-out) calc(var(--d,0ms) + 300ms),background-color 220ms ease}
   .motion .step+.step.is-in::before,.motion .step+.step.is-in::after{scale:1 1}
-  .motion .mission-figure .num{scale:.55;translate:0 68px;transform-origin:left top;transition:scale 1600ms var(--ease-out),translate 1600ms var(--ease-out)}
+  .motion .mission-figure .num{scale:.34;translate:0 220px;transform-origin:left top;transition:scale 1600ms linear,translate 1600ms linear}
   .motion .mission-figure.is-in .num{scale:1;translate:0 0}
   .motion .mission-tick:first-child{background-color:#111;scale:.62 1}
   .motion .mission-figure.is-in .mission-tick{animation:ruler-wave 480ms ease-in-out var(--wave-delay) both}
@@ -173,6 +173,7 @@ main:focus{outline:none}
   .mission-in,.what .head,.ways .head{grid-template-columns:1fr;gap:28px}
   .mission .num{font-size:120px;margin-top:-22px}
   .mission-figure{min-height:240px}
+  .motion .mission-figure .num{translate:0 160px}
   .wrow{grid-template-columns:96px 200px 1fr auto;column-gap:28px}
   .stage{width:calc(100% - 2*var(--gutter))}
 }
@@ -198,7 +199,7 @@ main:focus{outline:none}
   .mission-ruler{width:44px}
   .mission-tick{width:44px}
   .mission-tick:nth-child(3n){display:none}
-  .motion .mission-figure .num{translate:0 44px}
+  .motion .mission-figure .num{translate:0 100px}
   .steps{grid-template-columns:1fr;margin-top:48px}
   .step,.step:first-child,.step:last-child{padding:32px 0}
   .step+.step{border-left:0;border-top:1px solid var(--line-dark)}
