@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Collectively — Class action settlements simplified</title>
 <meta name="description" content="Easily file claims and collect funds with Collectively.">
-<link rel="icon" href="../assets/img/isotype.png">
+<link rel="icon" href="../assets/img/collectively-mark.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/merriweather-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/merriweather-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/fonts.css">
@@ -19,7 +19,7 @@
 <header class="site-head">
   <p class="bar">We don’t create litigation, but once a lawsuit’s over, we help you collect.</p>
   <div class="nav wrap">
-    <a class="brand" href="#main"><img class="logo" src="../assets/img/logo.png" width="111" height="52" alt="Collectively home"></a>
+    <a class="brand" href="#main"><img class="logo" src="../assets/img/collectively-logo.svg" width="111" height="52" alt="Collectively home"></a>
     <nav aria-label="Primary">
       <ul class="nav-links">
         <li><a href="#mission">Our mission</a></li>
@@ -39,7 +39,6 @@
     <div class="wrap hero-copy">
       <h1 id="hero-title" class="enter" style="--d:0ms">Class action settlements simplified</h1>
       <p class="lead enter" style="--d:90ms">Easily file claims and collect funds with Collectively</p>
-      <a class="btn enter" style="--d:180ms" href="#">Get started</a>
     </div>
     <div class="stage enter-stage">
       <div class="claim-par">
@@ -48,10 +47,13 @@
             <h2 id="claim-title">Discover<sup>®</sup> Card Merchant Settlement</h2>
             <p class="amt">Amount: up to <b>$1.2B</b></p>
           </div>
-          <dl>
-            <div><dt>Class period</dt><dd>Jan. 1, 2007 to Dec. 31, 2023</dd></div>
-            <div><dt>Claim filing deadline</dt><dd>May 18, 2026</dd></div>
-          </dl>
+          <div class="claim-bottom">
+            <dl>
+              <div><dt>Class period</dt><dd>Jan. 1, 2007 to Dec. 31, 2023</dd></div>
+              <div><dt>Claim filing deadline</dt><dd>May 18, 2026</dd></div>
+            </dl>
+            <a class="btn" href="#">Get started</a>
+          </div>
         </article>
       </div>
     </div>
@@ -59,9 +61,14 @@
 
   <section class="mission" id="mission" aria-labelledby="mission-title">
     <div class="wrap mission-in">
-      <p class="num" data-count="238" data-prefix="$" data-suffix="B" data-reveal>
-        <span class="sr-only">$238B</span><span aria-hidden="true" data-count-out>$238B</span>
-      </p>
+      <div class="mission-figure" data-reveal>
+        <p class="num" data-count="238" data-prefix="$" data-suffix="B">
+          <span class="sr-only">$238B</span><span aria-hidden="true" data-count-out>$238B</span>
+        </p>
+        <span class="mission-line" aria-hidden="true"></span>
+        <span class="mission-line" aria-hidden="true"></span>
+        <span class="mission-line" aria-hidden="true"></span>
+      </div>
       <div class="copy">
         <h2 id="mission-title" data-reveal>Our mission</h2>
         <p data-reveal style="--d:80ms">Since 2022, more than $238 billion* has been set aside for consumers and businesses.</p>
@@ -97,37 +104,37 @@
           <div class="ph"><img src="../assets/img/banking.jpg" alt="" width="1400" height="1051" loading="lazy" decoding="async"></div>
           <h3>Banking and financial</h3>
           <p class="s">Discover Card Settlement<span>Up to $1.2b</span></p>
-          <a class="go" href="#">Details<span class="sr-only"> about banking and financial settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
+          <a class="go" href="#"><span class="go-label">Details</span><span class="sr-only"> about banking and financial settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
         </li>
         <li class="wrow" data-reveal style="--d:60ms">
           <div class="ph"><img src="../assets/img/electronics.jpg" alt="" width="1400" height="933" loading="lazy" decoding="async"></div>
           <h3>Electronics</h3>
           <p class="s">Lithium Ion Battery Indirect<span>$107.95m · Includes purchases of cell phones, laptops, power tools and more.</span></p>
-          <a class="go" href="#">Details<span class="sr-only"> about electronics settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
+          <a class="go" href="#"><span class="go-label">Details</span><span class="sr-only"> about electronics settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
         </li>
         <li class="wrow" data-reveal style="--d:120ms">
           <div class="ph"><img src="../assets/img/travel.jpg" alt="" width="1400" height="934" loading="lazy" decoding="async"></div>
           <h3>Travel</h3>
           <p class="s">Domestic Airlines Settlement<span>$60m and growing · Eligibility: Domestic airline travel purchases from 2011 – 2018</span></p>
-          <a class="go" href="#">Details<span class="sr-only"> about travel settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
+          <a class="go" href="#"><span class="go-label">Details</span><span class="sr-only"> about travel settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
         </li>
         <li class="wrow" data-reveal style="--d:180ms">
           <div class="ph"><img src="../assets/img/food.jpg" alt="" width="1400" height="933" loading="lazy" decoding="async"></div>
           <h3>Food and grocery</h3>
           <p class="s">Products and cases that might provide ways to collect<span>Broiler Chickens, Beef, Pork, Packaged Seafood, Turkey, Salmon, and more...</span></p>
-          <a class="go" href="#">Details<span class="sr-only"> about food and grocery settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
+          <a class="go" href="#"><span class="go-label">Details</span><span class="sr-only"> about food and grocery settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
         </li>
         <li class="wrow" data-reveal style="--d:240ms">
           <div class="ph"><img src="../assets/img/healthcare.jpg" alt="" width="1400" height="933" loading="lazy" decoding="async"></div>
           <h3>Healthcare</h3>
           <p class="s">Currently tracking more than 25 cases and settlements</p>
-          <a class="go" href="#">Details<span class="sr-only"> about healthcare settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
+          <a class="go" href="#"><span class="go-label">Details</span><span class="sr-only"> about healthcare settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
         </li>
         <li class="wrow" data-reveal style="--d:300ms">
           <div class="ph"><img src="../assets/img/other.jpg" alt="" width="1400" height="930" loading="lazy" decoding="async"></div>
           <h3>Other</h3>
           <p class="s">More ways for your business to collect<span>Chemical Purchases, Credit Card Processing, Data Breaches, Electronic Components, Freight, Home and Building products, Packaging, and more...</span></p>
-          <a class="go" href="#">Details<span class="sr-only"> about other settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
+          <a class="go" href="#"><span class="go-label">Details</span><span class="sr-only"> about other settlements</span><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.5 12H5m8 6s6-4.419 6-6s-6-6-6-6"/></svg></a>
         </li>
       </ul>
     </div>
@@ -135,11 +142,10 @@
 
   <section class="close" aria-labelledby="close-title">
     <div class="wrap">
-      <img class="iso" src="../assets/img/isotype.png" alt="" width="56" height="56" data-reveal>
+      <img class="iso" src="../assets/img/collectively-mark.svg" alt="" width="56" height="56" data-reveal>
       <h2 id="close-title" data-reveal style="--d:60ms">Ready to start collecting</h2>
-      <p class="lead" data-reveal style="--d:120ms">Millions of eligible claimants miss out on collecting from billions of dollars in settlement awards — simply because they fail to file.</p>
-      <p class="dont" data-reveal style="--d:180ms">Don’t be one of them.</p>
-      <a class="btn" href="#" data-reveal style="--d:240ms">Get started</a>
+      <p class="lead" data-reveal style="--d:120ms">Millions of eligible claimants miss out on collecting from billions of dollars in settlement awards simply because they fail to file. <strong>Don’t be one of them.</strong></p>
+      <a class="btn" href="#" data-reveal style="--d:180ms">Get started</a>
     </div>
   </section>
 </main>
@@ -147,7 +153,7 @@
 <footer class="foot">
   <div class="wrap">
     <div class="top">
-      <img src="../assets/img/logo.png" width="85" height="40" alt="Collectively">
+      <img src="../assets/img/collectively-logo.svg" width="85" height="40" alt="Collectively">
       <nav aria-label="Legal">
         <ul class="links"><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy and legal</a></li></ul>
       </nav>
