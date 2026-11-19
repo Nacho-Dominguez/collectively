@@ -64,17 +64,24 @@ main:focus{outline:none}
 .claim dd{font-size:16px;font-weight:400;margin-top:4px;font-variant-numeric:tabular-nums}
 .claim-bottom .btn{flex:none}
 
-/* Mission */
-.mission-in{display:grid;grid-template-columns:1fr 520px;gap:96px;align-items:stretch;width:min(1296px,100% - 2*72px);padding-block:calc(var(--section) + 24px)}
-.mission-figure{position:relative;display:flex;align-items:flex-start;min-height:300px;padding-left:64px}
-.mission-ruler{position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;width:60px}
-.mission-tick{display:block;width:60px;height:1.5px;background-color:#111;scale:.62 1;transform-origin:left center}
-.mission-tick:first-child{background-color:var(--blue);scale:1 1}
-.mission .num{font:300 150px/1.1 var(--serif);letter-spacing:-.045em;color:var(--blue);font-variant-numeric:tabular-nums;white-space:nowrap;margin-top:-28px}
-.mission h2{color:var(--ink);margin-bottom:28px}
-.mission .copy p{font-size:16px;line-height:1.7;color:var(--muted)}
-.mission .copy p+p{margin-top:20px}
-.mission .copy .src{font-size:13px;margin-top:28px}
+/* Mission: the grid positions are structural; no guide lines are drawn. */
+.mission{padding-block:128px 144px}
+.mission-field{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));aspect-ratio:3/1}
+.mission-photo{aspect-ratio:1;overflow:hidden;align-self:start;background:var(--mist);transform-origin:center center}
+.mission-photo img{width:100%;height:100%;object-fit:cover}
+.mission-photo--merchant{grid-column:2;grid-row:1}
+.mission-photo--checkout{grid-column:5;grid-row:1}
+.mission-photo--warehouse{grid-column:4;grid-row:2;width:90%;justify-self:end}
+.mission-copy{display:grid;grid-template-columns:1fr 2fr;column-gap:20px;row-gap:48px;margin-top:48px}
+.mission h2{grid-column:1;grid-row:1;font-size:52px}
+.mission-statement{grid-column:2;grid-row:1;font:300 44px/1.25 var(--serif);letter-spacing:-.02em;color:var(--ink)}
+.mission-statement em{font-style:normal;color:var(--navy)}
+.mission-detail{grid-column:2;grid-row:2;width:min(100%,400px);font-size:16px;line-height:1.7;color:var(--muted)}
+.mission-detail .src{margin-top:20px;font-size:13px}
+@media (prefers-reduced-motion:no-preference){
+  .motion .mission-photo[data-reveal]{opacity:0;scale:.12;translate:0 0;transition:opacity 900ms var(--ease-out),scale 900ms var(--ease-out);transition-delay:var(--d,0ms)}
+  .motion .mission-photo[data-reveal].is-in{opacity:1;scale:1}
+}
 
 /* What we do */
 .what{background:var(--deep);color:#fff;padding-block:var(--section) 128px}
@@ -145,8 +152,6 @@ main:focus{outline:none}
 @keyframes rise{from{opacity:0;translate:0 22px}}
 @keyframes stage-in{from{opacity:0;clip-path:inset(10% 4% 0 4%)}to{opacity:1;clip-path:inset(0)}}
 @keyframes claim-par{to{translate:0 -96px}}
-@keyframes ruler-wave{0%,100%{scale:.62 1;background-color:#111}25%,75%{scale:.78 1;background-color:#24569A}50%{scale:1 1;background-color:var(--blue)}}
-@keyframes ruler-wave-end{0%{scale:.62 1;background-color:#111}25%{scale:.78 1;background-color:#24569A}50%,100%{scale:1 1;background-color:var(--blue)}}
 @media (prefers-reduced-motion:no-preference){
   /* Page start: hero copy, stage and claim card arrive in sequence. */
   .enter{animation:rise 800ms var(--ease-out) var(--d,0ms) both}
@@ -154,11 +159,6 @@ main:focus{outline:none}
   /* Divider ticks draw in once the steps reveal. */
   .motion .step+.step::before,.motion .step+.step::after{scale:1 0;transition:scale 600ms var(--ease-out) calc(var(--d,0ms) + 300ms),background-color 220ms ease}
   .motion .step+.step.is-in::before,.motion .step+.step.is-in::after{scale:1 1}
-  .motion .mission-figure .num{scale:.34;translate:0 220px;transform-origin:left top;transition:scale 1600ms linear,translate 1600ms linear}
-  .motion .mission-figure.is-in .num{scale:1;translate:0 0}
-  .motion .mission-tick:first-child{background-color:#111;scale:.62 1}
-  .motion .mission-figure.is-in .mission-tick{animation:ruler-wave 480ms ease-in-out var(--wave-delay) both}
-  .motion .mission-figure.is-in .mission-tick:first-child{animation-name:ruler-wave-end}
   /* The card begins flush with the stage and rises as the stage scrolls away. */
   @supports (animation-timeline:view()){
     @media (min-width:761px){
@@ -171,11 +171,9 @@ main:focus{outline:none}
 @media (max-width:1180px){
   :root{--gutter:48px;--section:112px}
   h1{font-size:60px} h2{font-size:44px}
-  .mission-in,.what .head,.ways .head{grid-template-columns:1fr;gap:28px}
-  .mission-in{width:calc(100% - 2*var(--gutter))}
-  .mission .num{font-size:120px;margin-top:-22px}
-  .mission-figure{min-height:240px}
-  .motion .mission-figure .num{translate:0 160px}
+  .what .head,.ways .head{grid-template-columns:1fr;gap:28px}
+  .mission{padding-block:104px 112px}
+  .mission-statement{font-size:36px}
   .wrow{grid-template-columns:96px 200px 1fr auto;column-gap:28px}
   .stage{width:calc(100% - 2*var(--gutter))}
 }
@@ -196,12 +194,15 @@ main:focus{outline:none}
   .claim h2{font-size:24px}
   .claim dl{flex-direction:column;gap:16px}
   .claim-bottom{align-items:flex-start;flex-direction:column;gap:24px}
-  .mission .num{font-size:84px;margin-top:-16px}
-  .mission-figure{min-height:160px;padding-left:48px}
-  .mission-ruler{width:44px}
-  .mission-tick{width:44px}
-  .mission-tick:nth-child(3n){display:none}
-  .motion .mission-figure .num{translate:0 100px}
+  .mission{padding-block:80px}
+  .mission-field{grid-template-columns:repeat(3,minmax(0,1fr));aspect-ratio:3/2}
+  .mission-photo--merchant{grid-column:1}
+  .mission-photo--checkout{grid-column:3}
+  .mission-photo--warehouse{grid-column:2}
+  .mission-copy{display:block;margin-top:32px}
+  .mission h2{font-size:34px}
+  .mission-statement{font-size:30px;margin-top:24px}
+  .mission-detail{margin-top:28px}
   .steps{grid-template-columns:1fr;margin-top:48px}
   .step,.step:first-child,.step:last-child{padding:32px 0}
   .step+.step{border-left:0;border-top:1px solid var(--line-dark)}
@@ -217,69 +218,4 @@ main:focus{outline:none}
   .foot .links{flex-wrap:wrap;gap:8px 24px}
   .close::before{width:330px;height:330px;left:-190px;top:50%}
   .close::after{width:330px;height:330px;right:-190px;top:50%}
-}
-
-/* Mission layout study: the same content in four light compositions. */
-.mission-switcher{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px;width:min(1296px,100% - 144px);margin-inline:auto;padding-top:36px}
-.mission-switcher-label{margin-right:14px;color:var(--muted);font-size:12px;font-weight:500;letter-spacing:.03em}
-.mission-switcher button{min-height:36px;padding:8px 12px;border:1px solid var(--line);border-radius:0;background:#fff;color:var(--muted);font:500 12px/1.2 var(--sans);cursor:pointer;transition:background-color 180ms var(--ease),border-color 180ms var(--ease),color 180ms var(--ease)}
-.mission-switcher button[aria-pressed="true"]{background:var(--sky-soft);border-color:#8EC9F2;color:var(--navy)}
-.mission-switcher button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.mission .mission-in{padding-top:96px}
-@media (hover:hover) and (pointer:fine){.mission-switcher button:not([aria-pressed="true"]):hover{background:var(--mist);color:var(--ink)}}
-
-@media (min-width:1181px){
-  .mission[data-layout="panel"] .mission-in{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center}
-  .mission[data-layout="panel"] .mission-figure{align-items:center;min-height:390px;padding:48px 32px 48px 104px;background:linear-gradient(135deg,#F1F8FD,#E7F3FC);border:1px solid var(--line)}
-  .mission[data-layout="panel"] .mission-ruler{left:32px;top:48px;bottom:48px;width:42px}
-  .mission[data-layout="panel"] .mission-tick{width:42px}
-  .mission[data-layout="panel"] .num{font-size:clamp(100px,9.5vw,145px);margin-top:0}
-  .mission[data-layout="panel"] .copy p:first-of-type{font:300 24px/1.45 var(--serif);color:var(--ink)}
-
-  .mission[data-layout="banner"] .mission-in{display:flex;flex-direction:column;gap:56px}
-  .mission[data-layout="banner"] .copy{order:0;display:grid;grid-template-columns:1fr 1fr;column-gap:90px;align-items:start}
-  .mission[data-layout="banner"] .copy h2{grid-column:1;grid-row:1/4}
-  .mission[data-layout="banner"] .copy p{grid-column:2}
-  .mission[data-layout="banner"] .mission-figure{order:1;min-height:200px;width:100%;padding:28px 0 0;border-top:1px solid var(--line)}
-  .mission[data-layout="banner"] .mission-ruler{display:none}
-  .mission[data-layout="banner"] .num{font-size:clamp(140px,15vw,220px);line-height:1;margin-top:0}
-
-  .mission[data-layout="centered"] .mission-in{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"title title" "figure figure" "lead body" "source source";gap:30px 80px;text-align:center}
-  .mission[data-layout="centered"] .copy{display:contents}
-  .mission[data-layout="centered"] .copy h2{grid-area:title;margin-bottom:0}
-  .mission[data-layout="centered"] .copy p:first-of-type{grid-area:lead}
-  .mission[data-layout="centered"] .copy p:nth-of-type(2){grid-area:body;margin-top:0}
-  .mission[data-layout="centered"] .copy .src{grid-area:source;justify-self:center;margin-top:4px}
-  .mission[data-layout="centered"] .copy p:not(.src){max-width:470px;text-align:left}
-  .mission[data-layout="centered"] .mission-figure{grid-area:figure;justify-content:center;width:100%;min-height:0;padding:0 0 38px;border-bottom:1px solid var(--line)}
-  .mission[data-layout="centered"] .mission-ruler{display:none}
-  .mission[data-layout="centered"] .num{font-size:180px;margin-top:0}
-}
-@media (max-width:1180px){
-  .mission-switcher{width:calc(100% - 2*var(--gutter));justify-content:flex-start}
-  .mission-switcher-label{width:100%;margin:0 0 6px}
-  .mission .mission-in{padding-top:64px}
-  .mission[data-layout="panel"] .mission-figure{align-items:center;min-height:260px;padding:40px 24px 40px 84px;background:linear-gradient(135deg,#F1F8FD,#E7F3FC);border:1px solid var(--line)}
-  .mission[data-layout="panel"] .mission-ruler{left:24px;top:40px;bottom:40px;width:42px}
-  .mission[data-layout="panel"] .mission-tick{width:42px}
-  .mission[data-layout="panel"] .num{margin-top:0}
-  .mission[data-layout="banner"] .mission-in{display:flex;flex-direction:column}
-  .mission[data-layout="banner"] .copy{order:0}
-  .mission[data-layout="banner"] .mission-figure{order:1;width:100%;min-height:0;padding:26px 0 0;border-top:1px solid var(--line)}
-  .mission[data-layout="banner"] .mission-ruler{display:none}
-  .mission[data-layout="banner"] .num{margin-top:0}
-  .mission[data-layout="centered"] .mission-in{display:flex;flex-direction:column;align-items:center;text-align:center}
-  .mission[data-layout="centered"] .copy{display:contents}
-  .mission[data-layout="centered"] .copy h2{order:0;margin-bottom:0}
-  .mission[data-layout="centered"] .mission-figure{order:1;justify-content:center;width:100%;min-height:0;padding:0 0 28px;border-bottom:1px solid var(--line)}
-  .mission[data-layout="centered"] .mission-ruler{display:none}
-  .mission[data-layout="centered"] .num{margin-top:0}
-  .mission[data-layout="centered"] .copy p{order:2;max-width:650px;margin-top:0}
-  .mission[data-layout="centered"] .copy .src{order:3}
-}
-@media (max-width:760px){
-  .mission-switcher{padding-top:28px}
-  .mission-switcher button{font-size:11px;padding-inline:9px}
-  .mission[data-layout="panel"] .mission-figure{min-height:200px;padding-left:70px}
-  .mission[data-layout="panel"] .num{font-size:clamp(64px,16vw,84px)}
 }

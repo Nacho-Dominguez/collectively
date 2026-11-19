@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="../assets/base.css">
 <link rel="stylesheet" href="styles.css">
 <script src="../assets/motion.js" defer></script>
-<script src="mission-variants.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -60,45 +59,20 @@
     </div>
   </section>
 
-  <section class="mission" id="mission" aria-labelledby="mission-title" data-layout="editorial">
-    <div class="mission-switcher" role="group" aria-label="Our mission layout options">
-      <span class="mission-switcher-label">Explore layouts</span>
-      <button type="button" data-mission-layout="editorial" aria-pressed="true">01 Editorial</button>
-      <button type="button" data-mission-layout="panel" aria-pressed="false">02 Panel</button>
-      <button type="button" data-mission-layout="banner" aria-pressed="false">03 Banner</button>
-      <button type="button" data-mission-layout="centered" aria-pressed="false">04 Centered</button>
-    </div>
+  <section class="mission" id="mission" aria-labelledby="mission-title">
     <div class="wrap mission-in">
-      <div class="mission-figure" data-reveal data-count="238" data-prefix="$" data-suffix="B">
-        <div class="mission-ruler" aria-hidden="true">
-          <span class="mission-tick" style="--wave-delay:1105ms"></span>
-          <span class="mission-tick" style="--wave-delay:1040ms"></span>
-          <span class="mission-tick" style="--wave-delay:975ms"></span>
-          <span class="mission-tick" style="--wave-delay:910ms"></span>
-          <span class="mission-tick" style="--wave-delay:845ms"></span>
-          <span class="mission-tick" style="--wave-delay:780ms"></span>
-          <span class="mission-tick" style="--wave-delay:715ms"></span>
-          <span class="mission-tick" style="--wave-delay:650ms"></span>
-          <span class="mission-tick" style="--wave-delay:585ms"></span>
-          <span class="mission-tick" style="--wave-delay:520ms"></span>
-          <span class="mission-tick" style="--wave-delay:455ms"></span>
-          <span class="mission-tick" style="--wave-delay:390ms"></span>
-          <span class="mission-tick" style="--wave-delay:325ms"></span>
-          <span class="mission-tick" style="--wave-delay:260ms"></span>
-          <span class="mission-tick" style="--wave-delay:195ms"></span>
-          <span class="mission-tick" style="--wave-delay:130ms"></span>
-          <span class="mission-tick" style="--wave-delay:65ms"></span>
-          <span class="mission-tick" style="--wave-delay:0ms"></span>
-        </div>
-        <p class="num">
-          <span class="sr-only">$238B</span><span aria-hidden="true" data-count-out>$238B</span>
-        </p>
+      <div class="mission-field">
+        <div class="mission-photo mission-photo--merchant" data-reveal style="--d:0ms"><img src="../assets/img/mission.jpg" alt="Shop owner serving a customer at the counter" width="1400" height="934" loading="lazy" decoding="async"></div>
+        <div class="mission-photo mission-photo--checkout" data-reveal style="--d:100ms"><img src="../assets/img/mission-checkout.jpg" alt="Customer paying at a business checkout" width="1400" height="1051" loading="lazy" decoding="async"></div>
+        <div class="mission-photo mission-photo--warehouse" data-reveal style="--d:200ms"><img src="../assets/img/mission-warehouse.jpg" alt="Warehouse serving a broad network of businesses" width="1400" height="933" loading="lazy" decoding="async"></div>
       </div>
-      <div class="copy">
+      <div class="mission-copy">
         <h2 id="mission-title" data-reveal>Our mission</h2>
-        <p data-reveal style="--d:80ms">Since 2022, more than $238 billion* has been set aside for consumers and businesses.</p>
-        <p data-reveal style="--d:160ms">Because most businesses never file, we’ve made it our mission to help you collect the funds you’re entitled to by simplifying the settlement recovery process.</p>
-        <p class="src" data-reveal style="--d:240ms">*Source: Law.com</p>
+        <p class="mission-statement" data-reveal style="--d:80ms">Since 2022, more than <em>$238 billion*</em> has been set aside for consumers and businesses.</p>
+        <div class="mission-detail" data-reveal style="--d:160ms">
+          <p>Because most businesses never file, we’ve made it our mission to help you collect the funds you’re entitled to by simplifying the settlement recovery process.</p>
+          <p class="src">*Source: Law.com</p>
+        </div>
       </div>
     </div>
   </section>
