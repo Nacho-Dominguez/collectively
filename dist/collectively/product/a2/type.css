@@ -1,0 +1,36 @@
+/* Type only. Layout, color and structure are exactly the original Aurora product screens.
+   Headings and figures: Montserrat 600. Text and controls: Inter 400/500. */
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body.product-page{font-family:"Inter",system-ui,sans-serif}
+/* Dialogs and toasts come from the shared product.css (Merriweather there). */
+.product-dialog-card h2{font:600 24px/1.25 "Montserrat",system-ui,sans-serif;letter-spacing:-.015em}
+.product-dialog-card,.product-dialog-card select,.product-toast{font-family:"Inter",system-ui,sans-serif}
+/* Numbers that change or line up in columns. */
+body.product-page :is(.lead b,.four b,.amt b,.tot b,.a,.fl em,.badge){font-variant-numeric:tabular-nums}
+
+/* ---- Adjustments requested after review ---- */
+/* Unclaimed: the two columns share the content width equally. */
+body.product-page .cols{gap:40px}
+body.product-page .left,body.product-page .right{flex:1 1 0;width:auto;min-width:0}
+/* Document cards: title Inter Medium, body stays regular but clamps to one line (full text on hover via title). */
+body.product-page .tx b{font-family:"Inter",system-ui,sans-serif;font-weight:500!important}
+body.product-page .tx span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.product-page .tx{min-width:0}
+/* Breadcrumb: 2px larger, current page Medium. */
+body.product-page .bc2{font-size:14px;line-height:20px}
+body.product-page .bc2 b{font-weight:500}
+/* Dashboard rows: title Medium, 4px less between title and body. */
+body.product-page .tt b{font-weight:500!important;margin-bottom:0}
+/* Sidebar: Medium only on the selected item. */
+body.product-page .nav a{font-weight:400}
+body.product-page .nav a.on{font-weight:500}
+
+/* Buttons: Montserrat Medium (page buttons, dialog buttons, the identity-check button). */
+body.product-page :is(.btn,.prototype-identity-button),
+.product-dialog-actions button{font-family:"Montserrat",system-ui,sans-serif;font-weight:500;letter-spacing:0}
+
+/* Page titles: one color, 24px (4px smaller than before). */
+body.product-page :is(.hd h1,.t2){font-size:24px!important;line-height:32px!important;color:#0B1B33!important}
+
+/* Filter tabs: Medium. */
+body.product-page .fl a{font-weight:500}

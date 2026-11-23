@@ -80,6 +80,43 @@
     .proto-picker-replay { padding: 0 10px; font-size: 14px; }
     .proto-picker[data-position="top"] { bottom: auto; top: 24px; }
 
+    .view-switcher {
+      position: fixed;
+      bottom: 68px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2147483647;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      max-width: calc(100vw - 32px);
+      padding: 4px;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px;
+      background: rgba(10,10,10,.82);
+      -webkit-backdrop-filter: blur(12px) saturate(1.4);
+      backdrop-filter: blur(12px) saturate(1.4);
+      box-shadow: 0 8px 24px rgba(0,0,0,.24), 0 2px 6px rgba(0,0,0,.12);
+      font: 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .view-switcher button {
+      height: 28px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: rgba(255,255,255,.58);
+      font: inherit;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 150ms ease-out, background-color 150ms ease-out;
+    }
+    .view-switcher button:hover { color: rgba(255,255,255,.86); }
+    .view-switcher button:active { transform: scale(.97); }
+    .view-switcher button[data-active] { background: rgba(255,255,255,.12); color: #fff; }
+    .view-switcher button:focus-visible { outline: 2px solid rgba(255,255,255,.5); outline-offset: 2px; }
+
     .concept-info-button {
       position: fixed;
       right: 24px;
@@ -145,8 +182,10 @@
     .concept-info-colors { display: flex; align-items: center; gap: 6px; margin-top: 12px; }
     .concept-info-colors span { width: 20px; height: 20px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; background: var(--swatch); }
     @media (max-width: 560px) {
-      .concept-info-button { right: 16px; bottom: 80px; }
-      .concept-info-panel { right: 16px; bottom: 128px; width: calc(100vw - 32px); max-height: calc(100dvh - 150px); }
+      .view-switcher { font-size: 11px; }
+      .view-switcher button { padding-inline: 9px; }
+      .concept-info-button { right: 16px; top: 16px; bottom: auto; }
+      .concept-info-panel { right: 16px; top: 60px; bottom: auto; width: calc(100vw - 32px); max-height: calc(100dvh - 80px); }
     }
     @media (prefers-reduced-motion: reduce) {
       .concept-info-button { transition: none; }
@@ -156,9 +195,15 @@
 </head>
 <body>
   <main id="stage" aria-label="Collectively site preview"></main>
+  <nav class="view-switcher" aria-label="Preview screens">
+    <button type="button" data-view="landing" data-active aria-current="page">Landing</button>
+    <button type="button" data-view="dashboard">Dashboard</button>
+    <button type="button" data-view="unclaimed">Unclaimed property</button>
+  </nav>
   <nav class="proto-picker" aria-label="Prototype variants">
     <span class="proto-picker-highlight" aria-hidden="true"></span>
-    <button class="proto-picker-item" data-active aria-current="true">Aurora</button>
+    <button class="proto-picker-item" data-active aria-current="true">Aurora II</button>
+    <button class="proto-picker-item">Aurora</button>
     <button class="proto-picker-item">Stage</button>
     <span class="proto-picker-divider" aria-hidden="true"></span>
     <button class="proto-picker-item proto-picker-replay" aria-label="Replay animation (R)">↻</button>
@@ -185,9 +230,13 @@
     </div>
   </aside>
   <script>
+    const validViews = ['landing', 'dashboard', 'unclaimed'];
+    const requestedView = new URLSearchParams(location.search).get('screen');
+    let currentView = validViews.includes(requestedView) ? requestedView : 'landing';
     const variants = [
-      () => '<iframe src="../a/index.html" title="Aurora version of Collectively"></iframe>',
-      () => '<iframe src="../b/index.html" title="Stage version of Collectively"></iframe>'
+      () => `<iframe src="${currentView === 'landing' ? '../a2/index.html' : '../product/a2/' + currentView + '.html'}" title="Aurora II ${currentView} preview"></iframe>`,
+      () => `<iframe src="${currentView === 'landing' ? '../a/index.html' : '../product/a/' + currentView + '.html'}" title="Aurora ${currentView} preview"></iframe>`,
+      () => `<iframe src="${currentView === 'landing' ? '../b/index.html' : '../product/b/' + currentView + '.html'}" title="Stage ${currentView} preview"></iframe>`
     ];
     // `variants` is an array of render functions, one per variant, in picker order.
     const stage = document.getElementById('stage');
@@ -195,10 +244,19 @@
     const highlight = picker.querySelector('.proto-picker-highlight');
     const items = [...picker.querySelectorAll('.proto-picker-item:not(.proto-picker-replay)')];
     const replay = picker.querySelector('.proto-picker-replay');
+    const viewItems = [...document.querySelectorAll('.view-switcher button')];
     const infoButton = document.querySelector('.concept-info-button');
     const infoPanel = document.querySelector('.concept-info-panel');
     const closeButton = document.querySelector('.concept-info-close');
     const conceptDetails = [
+      {
+        number: 'Concept 01 · Iteration 2', title: 'Aurora II',
+        summary: 'Aurora, revised after the first client review: the brand colors, Montserrat throughout, the product in the hero and a page structure that walks from the promise to the proof.',
+        visual: 'Aurora\u2019s blue sky returns behind a centered promise, with the dashboard and the featured settlement floating below it. What we do puts the three steps on the left and one illustration on the right that swaps with each step and follows the pointer. The mission sits on a pale pink band with the $238B figure and a warehouse photo, Ways to collect is a carousel of six industries, and the page ends on white and a light grey footer with die-cut stickers you can drag around.',
+        contrast: 'Compared with the first Aurora, it keeps the same sky and text structure but is more product-led and more pink: Montserrat instead of serifs, the brand magenta and blue tuned so white text passes WCAG AA, and a single interactive stage for the three steps.',
+        colors: ['#0A2A5E', '#05A9ED', '#E6007A', '#FFF8FB', '#1A6FD6'],
+        tags: ['Product-forward', 'Brand colors', 'Montserrat', 'Accessible', 'Interactive']
+      },
       {
         number: 'Concept 01', title: 'Aurora',
         summary: 'An inviting, atmospheric direction that makes the path from discovering a settlement to collecting feel simple and approachable.',
@@ -256,9 +314,32 @@
       requestAnimationFrame(() => {
         stage.innerHTML = variants[i]();
         stage.querySelector('iframe').addEventListener('load', (e) => {
-          e.target.contentDocument?.addEventListener('keydown', handleKeydown);
+          const doc = e.target.contentDocument;
+          doc?.addEventListener('keydown', handleKeydown);
+          if (doc && currentView === 'landing') {
+            doc.querySelectorAll('a').forEach((link) => {
+              if (link.textContent.trim().toLowerCase() === 'get started') {
+                link.addEventListener('click', (event) => { event.preventDefault(); setView('dashboard'); });
+              }
+            });
+          }
         });
       });
+    }
+
+    function setView(view, remount = true) {
+      if (!validViews.includes(view)) return;
+      currentView = view;
+      viewItems.forEach((item) => {
+        const active = item.dataset.view === view;
+        item.toggleAttribute('data-active', active);
+        if (active) item.setAttribute('aria-current', 'page');
+        else item.removeAttribute('aria-current');
+      });
+      const url = new URL(location);
+      url.searchParams.set('screen', view);
+      history.replaceState(null, '', url);
+      if (remount) mount(current);
     }
 
     function setActive(i) {
@@ -273,13 +354,21 @@
       moveHighlight();
       const url = new URL(location);
       url.searchParams.set('v', i + 1);
+      url.searchParams.set('screen', currentView);
       history.replaceState(null, '', url);
       mount(i);
     }
 
     items.forEach((el, i) => el.addEventListener('click', () => setActive(i)));
+    viewItems.forEach((item) => item.addEventListener('click', () => setView(item.dataset.view)));
     replay?.addEventListener('click', () => mount(current));
     window.addEventListener('resize', moveHighlight);
+    window.addEventListener('message', (event) => {
+      const frame = stage.querySelector('iframe');
+      if (event.source !== frame?.contentWindow || event.data?.source !== 'collectively-product') return;
+      if (event.data.style !== (current <= 1 ? 'a' : 'b')) return;
+      setView(event.data.view);
+    });
 
     function handleKeydown(e) {
       if (e.key === 'Escape' && !infoPanel.hidden) { setInfoOpen(false); return; }
@@ -294,6 +383,7 @@
     document.addEventListener('keydown', handleKeydown);
 
     const selected = parseInt(new URLSearchParams(location.search).get('v'), 10);
+    setView(currentView, false);
     setActive(selected >= 1 && selected <= variants.length ? selected - 1 : 0);
     // Enable the slide only after first paint, so load doesn't animate.
     requestAnimationFrame(() => requestAnimationFrame(() => picker.setAttribute('data-ready', '')));
